@@ -7,7 +7,7 @@ Resources:
       Properties:
         Handler: index.handler
         Runtime: nodejs8.10
-        CodeUri: .
+        CodeUri: src/
         Role: !GetAtt LambdaEdgeRemoveTrailingSlashRole.Arn
         Description: 'A Lambda@Edge function to remove trailing slashes from requests'
         MemorySize: 128
