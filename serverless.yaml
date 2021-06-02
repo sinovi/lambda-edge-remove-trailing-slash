@@ -6,7 +6,7 @@ Resources:
       Type: 'AWS::Serverless::Function'
       Properties:
         Handler: index.handler
-        Runtime: nodejs8.10
+        Runtime: nodejs12
         CodeUri: src/
         Role: !GetAtt LambdaEdgeRemoveTrailingSlashRole.Arn
         Description: 'A Lambda@Edge function to remove trailing slashes from CloudFront requests'
