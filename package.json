@@ -1,0 +1,12 @@
+{
+  "name": "lambda-edge-remove-trailing-slash",
+  "version": "1.1.0",
+  "description": "A Lambda@Edge function to remove trailing slashes from requests received by your CloudFront distribution. Designed to assist hosting static websites via S3, ensuring requests to /some/object-identifer/ are resolved to /some/object-identifier correctly",
+  "scripts": {
+    "test": "tape tests/**/*.js | tap-spec"
+  },
+  "devDependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^5.2.2"
+  }
+}
