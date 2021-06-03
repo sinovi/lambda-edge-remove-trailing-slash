@@ -4,7 +4,7 @@ A Lambda@Edge function to remove trailing slashes from requests received by your
 
 Designed to assist hosting static websites via S3, ensuring requests to /some/object-identifer/ are resolved to /some/object-identifier correctly
 
-Available on the [AWS Serverless Application Repository](https://console.aws.amazon.com/lambda/home?region=us-east-1#/create/app?applicationId=arn:aws:serverlessrepo:us-east-1:951661612909:applications/LambdaEdgeRemoveTrailingSlash)
+Available on the [AWS Serverless Application Repository](https://serverlessrepo.aws.amazon.com/applications/us-east-1/951661612909/LambdaEdgeRemoveTrailingSlash)
 
 ## How to find this function in the AWS Serverless Repository
 
