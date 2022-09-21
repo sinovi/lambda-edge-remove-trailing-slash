@@ -10,17 +10,17 @@ Metadata:
     ReadmeUrl: README.md
     Labels: ['Lambda@Edge', 'Lambda', 'CloudFront', 'Static', 'S3']
     HomePageUrl: https://github.com/sinovi/lambda-edge-remove-trailing-slash
-    SemanticVersion: 1.1.0
+    SemanticVersion: 1.2.1
     SourceCodeUrl: https://github.com/sinovi/lambda-edge-remove-trailing-slash
 Resources:
     LambdaEdgeRemoveTrailingSlash:
       Type: 'AWS::Serverless::Function'
       Properties:
         Handler: index.handler
-        Runtime: nodejs12.x
+        Runtime: nodejs16.x
         CodeUri: src/
         Role: !GetAtt LambdaEdgeRemoveTrailingSlashRole.Arn
-        Description: 'A Lambda@Edge function to remove trailing slashes from CloudFront requests'
+        Description: 'A Lambda@Edge function to remove trailing slashes from CloudFront requests. Updated to use nodejs16.x runtime. '
         MemorySize: 128
         Timeout: 3
         AutoPublishAlias: live

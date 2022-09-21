@@ -1,3 +1,6 @@
+# What's new
+- version 1.2.1: Updated readme. 
+- version 1.2.0: Updated Node runtime to 16.x
 # LambdaEdgeRemoveTrailingSlash
 
 A Lambda@Edge function to remove trailing slashes from requests received by your CloudFront distribution. 
@@ -21,7 +24,7 @@ Available on the [AWS Serverless Application Repository](https://serverlessrepo.
 Installation of this function comprises two stages; Installing the application via the Serverless Repository and CloudFront, then configuring and deploying the Lambda@Edge function.
 
 #### Building the CloudFormation Stack and Lambda Application
-1. Ensure your console is currently viewing US-East-1 (N. Virginia) - All Lambda@Edge functions must be deployed in this region, see https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-how-it-works.html
+1. Ensure your console is currently viewing US-East-1 (N. Virginia) - All Lambda@Edge functions must be deployed in this region, see [lambda at edge how it works](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-how-it-works.html)
 1. Visit this application on the AWS Serverless Repository (as above) 
 1. Review the SAM Template, Permissions and License as appropriate
 1. In the 'Application settings' box, choose a CloudFormation Stack name for this application 
@@ -44,16 +47,20 @@ AWS will now build a CloudFormation Stack, a Lambda Application and create a new
 
 AWS will now deploy the Lambda@Edge function to all Edge locations for your chosen CloudFront distribution. This may take a few minutes.
 
-Once deployed, visit your website. You will find that https://{your-website.com}/path/ redirects as HTTP 301 to https://{your-website.com}/path (without the trailing slash)
+Once deployed, visit your website. You will find that `https://{your-website.com}/path/` redirects as HTTP 301 to `https://{your-website.com}/path` (without the trailing slash)
 
 
 ## Notes on IAM role creation
 
 This application creates an IAM Role for the Lambda function. The IAM Role uses only standard AWS resources, namely:
 
-* arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole - to give the Lambda function basic execution permissions
+* `arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole` - to give the Lambda function basic execution permissions
 * A Trust Relationship with edgelambda.amazonaws.com - to allow publishing of the Lambda function as Lambda@Edge
+
+## Questions / support
+
+If you'd like to reach out to us with any questions you can find our details at [sinovi.uk/contact](https://sinovi.uk/contact)
 
 ## License
 
-MIT License (https://github.com/sinovi/lambda-edge-remove-trailing-slash/blob/master/LICENSE)
+[MIT License](https://github.com/sinovi/lambda-edge-remove-trailing-slash/blob/master/LICENSE)
