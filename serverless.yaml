@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Metadata:
   AWS::ServerlessRepo::Application:
-    Name: LambdaEdgeRemoveTrailingSlash
+    Name: LambdaEdgeRemoveTrailingSlash_20
     Description: SAM configuration for creating a Lambda@Edge function to remove trailing slashes from CloudFront requests
     Author: Si Novi
     SpdxLicenseId: MIT
@@ -17,7 +17,7 @@ Resources:
       Type: 'AWS::Serverless::Function'
       Properties:
         Handler: index.handler
-        Runtime: nodejs16.x
+        Runtime: nodejs20.x
         CodeUri: src/
         Role: !GetAtt LambdaEdgeRemoveTrailingSlashRole.Arn
         Description: 'A Lambda@Edge function to remove trailing slashes from CloudFront requests. Updated to use nodejs16.x runtime. '
