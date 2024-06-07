@@ -47,6 +47,10 @@ const invokeLambda = (uri, callback) => {
     )
 }
 
+test('Node version is 20.x', function (t) {
+    t.plan(1);
+    t.equals(process.version.split('.')[0], 'v20', 'Node version is 20.x');
+});
 
 test('URI with trailing slash - /with-trailing-slash/', function (t) {
     t.plan(2);
