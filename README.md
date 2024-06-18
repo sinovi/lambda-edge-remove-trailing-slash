@@ -1,6 +1,8 @@
 # What's new
 - version 1.2.1: Updated readme. 
 - version 1.2.0: Updated Node runtime to 16.x
+- version 1.3.0: Updated Node runtime to 20.x
+
 # LambdaEdgeRemoveTrailingSlash
 
 A Lambda@Edge function to remove trailing slashes from requests received by your CloudFront distribution. 
