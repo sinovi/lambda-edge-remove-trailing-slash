@@ -47,6 +47,29 @@ const invokeLambda = (uri, callback) => {
     )
 }
 
+test('Ensure open redirect does not occur', function (t) {
+    t.plan(0);
+
+    const uri = '/redirect//google.com/'
+    const expectedUri = '/redirect/google.com'
+
+    const expectedResp = {
+      'status': '301',
+      'statusDescription': 'Permanently moved',
+      'headers': {
+        'location': [
+          {
+            'key': 'Location',
+            'value': expectedUri
+          }
+        ]
+      }};
+
+    invokeLambda(uri, (data, resp) => {
+      t.deepEquals(resp, expectedResp, 'Redirected to URI without double slashes')
+    })
+});
+
 test('Node version is 20.x', function (t) {
     t.plan(1);
     t.equals(process.version.split('.')[0], 'v20', 'Node version is 20.x');
@@ -63,7 +86,7 @@ test('URI with trailing slash - /with-trailing-slash/', function (t) {
 
     })
 
-    const expectedReq = {
+    const expectedResp = {
       "clientIp": "203.0.113.178",
       "headers": {
         "host": [
@@ -92,7 +115,7 @@ test('URI with trailing slash - /with-trailing-slash/', function (t) {
 
     invokeLambda(uri, (data, resp) => {
 
-      t.notDeepEqual(resp, expectedReq, 'Uri has a trailing slash so is redirected. original request is not passed through')
+      t.notDeepEqual(resp, expectedResp, 'Uri has a trailing slash so is redirected. original request is not passed through')
 
     })
 });
@@ -104,7 +127,7 @@ test('URI without a trailing slash - /no-trailing-slash', function (t) {
 
   invokeLambda(uri, (data, resp) => {
     
-    const expectedReq = {
+    const expectedResp = {
       "clientIp": "203.0.113.178",
       "headers": {
         "host": [
@@ -131,7 +154,7 @@ test('URI without a trailing slash - /no-trailing-slash', function (t) {
       "uri": `${uri}`
     }
 
-    t.deepEquals(resp, expectedReq, 'No trainling slash, so request passed through')
+    t.deepEquals(resp, expectedResp, 'No trailing slash, so request passed through')
 
     invokeLambda(uri, (data, resp) => {
 

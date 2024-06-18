@@ -3,10 +3,15 @@ exports.handler = (event, context, callback) => {
     
     var request = event.Records[0].cf.request;
 
+    // Prevent open redirect by replacing double slashes with single slash
+    if(request.uri.indexOf('//') > -1) {
+        request.uri = request.uri.replace(/\/\//g, '/');
+    }
+
     if(request.uri !== '/' && request.uri.substr(-1) === '/') {
         
         var params = '';
-        if(('querystring' in request) && (request.querystring.length > 0)) {
+        if(request.querystring && (request.querystring.length > 0)) {
             params = '?'+request.querystring;
         }
         
@@ -28,6 +33,4 @@ exports.handler = (event, context, callback) => {
         return callback(null, request);
 
     }
-
-    
 };
