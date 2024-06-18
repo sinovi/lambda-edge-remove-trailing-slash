@@ -48,7 +48,7 @@ const invokeLambda = (uri, callback) => {
 }
 
 test('Ensure open redirect does not occur', function (t) {
-    t.plan(0);
+    t.plan(1);
 
     const uri = '/redirect//google.com/'
     const expectedUri = '/redirect/google.com'
